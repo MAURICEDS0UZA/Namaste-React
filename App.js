@@ -26,11 +26,52 @@ const Header = () => {
   );
 };
 
+const FoodContainer = () => {
+  return (
+    <>
+      <div className="food-container">
+        <img src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/e0vvulfbahjxjz6k4uwi"></img>
+        <div>
+          <p>Hotel Empire</p>
+          <p>Indian cuisine,spices,roseted chicken</p>
+          <p>Hotel Empire</p>
+          <p>4.4 stars</p>
+          <p>35 mins</p>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const BodyContainer = () => {
+  return (
+    <>
+      <div className="bodyContainer">
+        <div className="search">
+          <input type="text"></input>
+          <button>Search</button>
+        </div>
+        <div className="food-list">
+          <FoodContainer />
+          <FoodContainer />
+          <FoodContainer />
+          <FoodContainer />
+          <FoodContainer />
+          <FoodContainer />
+          <FoodContainer />
+          <FoodContainer />
+          <FoodContainer />
+        </div>
+      </div>
+    </>
+  );
+};
 const App = () => {
   return (
     <>
       <div className="app-container">
         <Header />
+        <BodyContainer />
       </div>
     </>
   );
