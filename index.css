@@ -1,7 +1,7 @@
 :root {
   --primary-color: #979aa3;
-  --border-shadow: #fcfcfc;
-  --primary-color1: rgb(198, 53, 53) f;
+  --border-shadow: #c2bebe;
+  --primary-color-dark: #48494d;
 }
 
 html,
@@ -17,7 +17,7 @@ body {
 }
 
 .footer {
-  box-shadow: 0 10px 1px var(--border-shadow);
+  box-shadow: 0 10px 10px var(--border-shadow);
   margin: 10px;
   padding: 0 60px;
   background-color: rgb(255, 255, 255);
@@ -40,4 +40,53 @@ body {
   margin: 10px 20px;
   padding: 10px;
   list-style-type: none;
+}
+
+.menu-bar > ul > li:hover {
+  color: var(--primary-color-dark);
+}
+
+.bodyContainer {
+  border: 2px solid black;
+  margin: 25px 0;
+  padding: 20px;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin: 15px;
+}
+
+.food-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.search > input[type="text"] {
+  margin-right: 20px;
+}
+
+.search > button {
+  border: none;
+  font-weight: bold;
+}
+
+.food-container {
+  box-shadow: 20px 20px 50px grey;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  margin: 10px 15px;
+  padding: 10px;
+  width: 200px;
+  height: 450px;
+}
+
+.food-container:hover {
+  border: 2px solid rgb(14, 13, 13);
+}
+
+.food-container > img {
+  border-radius: 20px 20px;
 }
