@@ -16,8 +16,7 @@ body {
   height: 98vh;
 }
 
-.footer {
-  box-shadow: 0 10px 10px var(--border-shadow);
+.header {
   margin: 10px;
   padding: 0 60px;
   background-color: rgb(255, 255, 255);
@@ -44,10 +43,14 @@ body {
 
 .menu-bar > ul > li:hover {
   color: var(--primary-color-dark);
+  border-radius: 1rem;
+
+  background-color: var(--primary-color);
 }
 
 .bodyContainer {
-  border: 2px solid black;
+  box-shadow: 20px 20px 50px grey inset;
+  border-radius: 2rem;
   margin: 25px 0;
   padding: 20px;
 }
@@ -63,30 +66,37 @@ body {
   flex-wrap: wrap;
   justify-content: center;
 }
+
 .search > input[type="text"] {
   margin-right: 20px;
+  border-radius: 2rem;
+  border: 1px solid var(--primary-color);
 }
 
 .search > button {
   border: none;
   font-weight: bold;
+  background-color: var(--primary-color);
+  color: var(--primary-color-dark);
+  border-radius: 2rem;
 }
 
 .food-container {
-  box-shadow: 20px 20px 50px grey;
+  box-shadow: 10px 10px 40px grey;
   border-radius: 25px;
   display: flex;
   flex-direction: column;
   margin: 10px 15px;
   padding: 10px;
   width: 200px;
-  height: 450px;
 }
 
 .food-container:hover {
   border: 2px solid rgb(14, 13, 13);
+  transition: border 2s ease; /* Smooth transition */
 }
 
 .food-container > img {
   border-radius: 20px 20px;
+  height: 18rem;
 }
