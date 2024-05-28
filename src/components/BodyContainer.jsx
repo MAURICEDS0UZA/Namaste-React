@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { resLists } from "../utils/constants";
 import FoodContainer from "./FoodContainer";
+import Shimmer from "./Shimmer";
 
 const BodyContainer = () => {
-  const [foodLists, setFoodLists] = useState(resLists);
-
+  const [foodLists, setFoodLists] = useState([]);
+  console.log(foodLists.length);
   useEffect(() => {
     fetchData();
   }, []);
@@ -20,24 +21,33 @@ const BodyContainer = () => {
 
   return (
     <div className="bodyContainer">
-      <div className="search">
-        <input type="text"></input>
-        <button>Search</button>
-        <button
-          onClick={() =>
-            setFoodLists(
-              foodLists.filter((item) => item.info.avgRating === 4.4)
-            )
-          }
-        >
-          Top Rated
-        </button>
-      </div>
-      <div className="food-list">
-        {foodLists.map((item) => {
-          return <FoodContainer key={item?.info?.id} resLists={item} />;
-        })}
-      </div>
+      {foodLists.length === 0 ? (
+        <>
+          {console.log("true")}
+          <Shimmer />
+        </>
+      ) : (
+        <>
+          <div className="search">
+            <input type="text"></input>
+            <button>Search</button>
+            <button
+              onClick={() =>
+                setFoodLists(
+                  foodLists.filter((item) => item.info.avgRating === 4.4)
+                )
+              }
+            >
+              Top Rated
+            </button>
+          </div>
+          <div className="food-list">
+            {foodLists.map((item) => {
+              return <FoodContainer key={item?.info?.id} resLists={item} />;
+            })}
+          </div>
+        </>
+      )}
     </div>
   );
 };
