@@ -3,9 +3,11 @@ import { Company_Logo } from "../utils/constants";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Log in");
+
   const updateLogin = () => {
     loginBtn === "Log in" ? setLoginBtn("Log out") : setLoginBtn("Log in");
   };
+
   return (
     <>
       <div className="header">

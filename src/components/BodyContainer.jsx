@@ -12,9 +12,10 @@ const BodyContainer = () => {
     fetchData();
   }, []);
 
-  async function fetchData() {
+  // *Getting foodlists
+  const fetchData = async () => {
     const data = await fetch(
-      "https://proxy.cors.sh/https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const res = await data.json();
 
@@ -24,7 +25,7 @@ const BodyContainer = () => {
     setFoodLists(
       res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
-  }
+  };
 
   return (
     <div className="bodyContainer">
@@ -57,11 +58,13 @@ const BodyContainer = () => {
               Search
             </button>
             <button
-              onClick={() =>
-                setFoodLists(
-                  foodLists.filter((item) => item.info.avgRating === 4.4)
-                )
-              }
+              onClick={() => {
+                const restaurantsMost = foodLists.filter(
+                  (res) => res.info.avgRating > 4.1
+                );
+                console.log("most rated");
+                setfilterFood(restaurantsMost);
+              }}
             >
               Top Rated
             </button>
