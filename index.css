@@ -41,6 +41,12 @@ body {
   list-style-type: none;
 }
 
+li > button {
+  font-size: inherit;
+  border: none;
+  color: inherit;
+  background-color: inherit;
+}
 .menu-bar > ul > li:hover {
   color: var(--primary-color-dark);
   border-radius: 1rem;
