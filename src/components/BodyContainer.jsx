@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { resLists } from "../utils/constants";
+import { Food_List, resLists } from "../utils/constants";
 import FoodContainer from "./FoodContainer";
 import Shimmer from "./Shimmer";
 
@@ -15,9 +15,7 @@ const BodyContainer = () => {
 
   // *Getting foodlists
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-    );
+    const data = await fetch(Food_List);
     const res = await data.json();
 
     setfilterFood(
@@ -32,7 +30,6 @@ const BodyContainer = () => {
     <div className="bodyContainer">
       {foodLists.length === 0 ? (
         <>
-          {console.log("true")}
           <Shimmer />
         </>
       ) : (
