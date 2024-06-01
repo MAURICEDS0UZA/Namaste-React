@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { resLists } from "../utils/constants";
 import FoodContainer from "./FoodContainer";
 import Shimmer from "./Shimmer";
@@ -71,7 +72,11 @@ const BodyContainer = () => {
           </div>
           <div className="food-list">
             {filterFood.map((item) => {
-              return <FoodContainer key={item?.info?.id} resLists={item} />;
+              return (
+                <Link key={item?.info?.id} to={"/restaurant/" + item?.info?.id}>
+                  <FoodContainer resLists={item} />
+                </Link>
+              );
             })}
           </div>
         </>
