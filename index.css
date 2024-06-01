@@ -2,6 +2,7 @@
   --primary-color: #979aa3;
   --border-shadow: #c2bebe;
   --primary-color-dark: #48494d;
+  --high-lighted-color: #ff6b09;
 }
 
 html,
@@ -138,4 +139,48 @@ li > button {
   100% {
     transform: translateY(0);
   }
+}
+
+.restaurant-detail {
+  font-size: 20px;
+  width: 800px;
+  padding: 0 2rem 2rem;
+  border-radius: 20px;
+  background: linear-gradient(white, var(--border-shadow));
+  display: grid;
+  margin: auto;
+}
+
+.restaurant-name {
+  font-size: 4rem;
+  font-weight: bolder;
+  margin: 0 0 2rem 4rem;
+}
+
+.restaurant-detail_list {
+  background-color: white;
+  border-radius: 20px;
+  padding: 2rem;
+}
+
+.restaurant-detail_rating {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
+}
+
+.restaurant-detail_list > div:nth-of-type(2) {
+  color: var(--high-lighted-color);
+  padding: 1rem;
+}
+
+.restaurant-detail_list > div:nth-of-type(3) {
+  font-size: 80%;
+  padding: 1rem;
+}
+
+.restaurant-detail-delivery {
+  display: flex;
+  gap: 0.5rem;
+  padding: 1rem;
 }
