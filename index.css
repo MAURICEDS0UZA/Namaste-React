@@ -184,3 +184,9 @@ li > button {
   gap: 0.5rem;
   padding: 1rem;
 }
+
+.restaurant-menu {
+  display: grid;
+  margin: auto;
+  width: 800px;
+}
