@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RestaurantDetails from "./RestaurantDetails";
 import { Restaurant_Api } from "../utils/constants";
+import RestaurantMenu from "./RestaurantMenu";
 
 const RestaurantCard = () => {
   const [restaurant, setRestaurant] = useState([]);
@@ -18,7 +19,7 @@ const RestaurantCard = () => {
     const res = await data.json();
     setRestaurant(res?.data?.cards[2]?.card?.card?.info);
     setrestMenu(
-      res?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+      res?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[3]?.card
         ?.card?.itemCards
     );
   };
@@ -26,8 +27,7 @@ const RestaurantCard = () => {
   return (
     <>
       <RestaurantDetails resListDetail={restaurant} />
-      {/* Api is response is not consistant */}
-      {/* <RestaurantMenu resMenuDetails={restMenu} /> */}
+      <RestaurantMenu resMenuDetails={restMenu} />
     </>
   );
 };
