@@ -1,9 +1,7 @@
-import { Veg_Logo, Non_veg } from "../utils/constants";
+import { Non_Veg_Logo, Veg_Logo, Food_Image_Menu } from "../utils/constants";
 import { Fragment } from "react";
 
 const RestaurantMenu = ({ resMenuDetails }) => {
-  const Food_Image_Menu =
-    "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/";
   return (
     <>
       <section className="restaurant-menu">
@@ -24,7 +22,7 @@ const RestaurantMenu = ({ resMenuDetails }) => {
             <Fragment key={id}>
               <div key={id}>
                 <div>
-                  <div>{isVeg ? Veg_Logo : "Non_veg"}</div>
+                  <div>{isVeg ? Veg_Logo : Non_Veg_Logo}</div>
                   <div>{name}</div>
                   <div>Rs.{defaultPrice / 100 || price / 100}</div>
                   <div>

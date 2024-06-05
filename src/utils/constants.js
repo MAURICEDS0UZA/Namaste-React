@@ -1576,7 +1576,7 @@ const Veg_Logo = (
   <svg
     width="20"
     height="10"
-    viewBox="0 0 24 24"
+    viewBox="0 0 100 100"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -1593,7 +1593,7 @@ const Veg_Logo = (
   </svg>
 );
 
-const Non_veg = (
+const Non_Veg_Logo = (
   <svg
     width="20"
     height="10"
@@ -1614,6 +1614,9 @@ const Non_veg = (
   </svg>
 );
 
+const Food_Image_Menu =
+  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_300,h_300,c_fit/";
+
 // * Api used for restaurant card
 const Restaurant_Api =
   "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.96340&lng=77.58550&restaurantId=";
@@ -1630,5 +1633,6 @@ export {
   Veg_Logo,
   Restaurant_Api,
   Food_List,
-  Non_veg,
+  Non_Veg_Logo,
+  Food_Image_Menu,
 };
