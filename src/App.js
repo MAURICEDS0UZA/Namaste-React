@@ -8,16 +8,42 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import Contact from "./components/Contact";
 import RestaurantCard from "./components/RestaurantCard";
 
-const App = () => {
-  return (
-    <>
-      <div className="app-container">
-        <Header />
-        <Outlet />
-      </div>
-    </>
-  );
-};
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log("parent constructor");
+  }
+
+  componentDidMount() {
+    console.log("parent Mount");
+  }
+
+  render() {
+    console.log("render parent");
+    return (
+      <>
+        <div className="app-container">
+          <Header />
+          <Outlet />
+        </div>
+      </>
+    );
+  }
+}
+
+export default App;
+
+// const App = () => {
+//   return (
+//     <>
+//       <div className="app-container">
+//         <Header />
+//         <Outlet />
+//         <AboutUs val={heelo} />
+//       </div>
+//     </>
+//   );
+// };
 
 // * Routing Into app
 const appRoute = createBrowserRouter([
@@ -31,7 +57,7 @@ const appRoute = createBrowserRouter([
       },
       {
         path: "/about",
-        element: <AboutUs />,
+        element: <AboutUs val={"Bangalore"} />,
       },
 
       {
@@ -42,10 +68,10 @@ const appRoute = createBrowserRouter([
         path: "/restaurant/:resId",
         element: <RestaurantCard />,
       },
-      // {
-      //   path: "*",
-      //   element: <ErrorBoundary />,
-      // },
+      {
+        path: "*",
+        element: <ErrorBoundary />,
+      },
     ],
     errorElement: <ErrorBoundary />,
   },
