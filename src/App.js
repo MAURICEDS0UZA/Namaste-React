@@ -1,12 +1,15 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
-import BodyContainer from "./components/BodyContainer";
+// import BodyContainer from "./components/BodyContainer";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
 import ErrorBoundary from "./components/ErrorBoundary";
 import Contact from "./components/Contact";
 import RestaurantCard from "./components/RestaurantCard";
+import Shimmer from "./components/Shimmer";
+
+const BodyContainer = lazy(() => import("../src/components/BodyContainer"));
 
 class App extends React.Component {
   constructor(props) {
@@ -53,7 +56,11 @@ const appRoute = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <BodyContainer />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <BodyContainer />
+          </Suspense>
+        ),
       },
       {
         path: "/about",
