@@ -11,36 +11,33 @@ const Header = () => {
 
   return (
     <>
-      <div className="header">
-        <div className="company-logo">
-          <img className="logo-img" src={Company_Logo} alt="image"></img>
+      <div className="p-4 m-4 flex lg:justify-between sm:justify-start">
+        <div className="md:shrink-0">
+          <img className=" lg:w-40" src={Company_Logo} alt="image"></img>
         </div>
-        <div className="menu-bar">
-          <ul>
-            <li>
-              {" "}
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About us</Link>
-            </li>
-            <li>
-              <Link to="/Contact">Contact us</Link>
-            </li>
-            <li>
-              <Link to="/">Cart</Link>
-            </li>
-            <li>
-              <button
-                onClick={() => {
-                  updateLogin();
-                }}
-              >
-                {loginBtn}
-              </button>
-            </li>
-          </ul>
-        </div>
+        <ul className="flex flex-wrap items-center">
+          <li className="px-4 py-2 m-4 font-medium bg-slate-200  hover:bg-slate-300 rounded-lg">
+            <Link to="/">Home</Link>
+          </li>
+          <li className="px-4 py-2 m-4 font-medium bg-slate-200  hover:bg-slate-300 rounded-lg">
+            <Link to="/about">About us</Link>
+          </li>
+          <li className="px-4 py-2 m-4 font-medium bg-slate-200  hover:bg-slate-300 rounded-lg">
+            <Link to="/Contact">Contact us</Link>
+          </li>
+          <li className="px-4 py-2 m-4 font-medium bg-slate-200  hover:bg-slate-300 rounded-lg">
+            <Link to="/">Cart</Link>
+          </li>
+          <li className="px-4 py-2 m-4 font-medium bg-slate-200  hover:bg-slate-300 rounded-lg">
+            <button
+              onClick={() => {
+                updateLogin();
+              }}
+            >
+              {loginBtn}
+            </button>
+          </li>
+        </ul>
       </div>
     </>
   );
