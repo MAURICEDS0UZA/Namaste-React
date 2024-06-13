@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Food_List, resLists } from "../utils/constants";
-import FoodContainer from "./FoodContainer";
+import FoodContainer, { withOpenRestaurantCard } from "./FoodContainer";
 import Shimmer from "./Shimmer";
 
 const BodyContainer = () => {
   const [foodLists, setFoodLists] = useState([]);
   const [filterFood, setfilterFood] = useState([]);
   const [searchVal, setsearchVal] = useState("");
+
+  // **HOC enchance promoted card
+  const RestaurantPromoted = withOpenRestaurantCard(FoodContainer);
 
   useEffect(() => {
     fetchData();
@@ -73,7 +76,11 @@ const BodyContainer = () => {
             {filterFood.map((item) => {
               return (
                 <Link key={item?.info?.id} to={"/restaurant/" + item?.info?.id}>
-                  <FoodContainer resLists={item} />
+                  {item?.info?.veg ? (
+                    <RestaurantPromoted resLists={item} />
+                  ) : (
+                    <FoodContainer resLists={item} />
+                  )}
                 </Link>
               );
             })}

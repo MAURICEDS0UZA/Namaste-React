@@ -26,4 +26,19 @@ const FoodContainer = ({ resLists }) => {
   );
 };
 
+export const withOpenRestaurantCard = (FoodContainer) => {
+  return (props) => {
+    return (
+      <>
+        <div className="relative">
+          <div className="absolute   bg-black text-white m-2 p-2 rounded-lg">
+            Promoted
+          </div>
+          <FoodContainer {...props} />
+        </div>
+      </>
+    );
+  };
+};
+
 export default FoodContainer;
