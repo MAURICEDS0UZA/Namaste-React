@@ -1,33 +1,32 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Food_List, resLists } from "../utils/constants";
 import FoodContainer, { withOpenRestaurantCard } from "./FoodContainer";
 import Shimmer from "./Shimmer";
+import useRestaurantList from "../utils/useRestaurantList";
 
 const BodyContainer = () => {
   const [foodLists, setFoodLists] = useState([]);
-  const [filterFood, setfilterFood] = useState([]);
+  const [filterFood, setFilterFood] = useState([]);
   const [searchVal, setsearchVal] = useState("");
+
+  // ***Hook to fetch menu list
+  const res = useRestaurantList();
+
+  useEffect(() => {
+    {
+      const restaurants =
+        res?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
+
+      if (restaurants) {
+        setFilterFood(restaurants);
+        setFoodLists(restaurants);
+      }
+    }
+  }, [res]);
 
   // **HOC enchance promoted card
   const RestaurantPromoted = withOpenRestaurantCard(FoodContainer);
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  // *Getting foodlists
-  const fetchData = async () => {
-    const data = await fetch(Food_List);
-    const res = await data.json();
-
-    setfilterFood(
-      res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
-    );
-    setFoodLists(
-      res.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
-    );
-  };
 
   return (
     <div>
