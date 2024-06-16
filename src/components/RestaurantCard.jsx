@@ -14,13 +14,20 @@ const RestaurantCard = () => {
   useEffect(() => {
     if (res.cards) {
       setRestaurant(res?.cards[2]?.card?.card?.info);
-      const restFetchMenu =
-        res?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
-          (resCard) =>
-            resCard?.card?.card?.["@type"] ===
-            "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-        );
-      setrestMenu(restFetchMenu);
+
+      const groupCardObject = res?.cards.find((item) =>
+        item.hasOwnProperty("groupedCard")
+      );
+
+      if (groupCardObject) {
+        const restFetchMenu =
+          res?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+            (resCard) =>
+              resCard?.card?.card?.["@type"] ===
+              "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+          );
+        setrestMenu(restFetchMenu);
+      }
     }
   }, [res]);
 

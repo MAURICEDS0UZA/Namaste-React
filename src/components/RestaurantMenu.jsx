@@ -3,11 +3,11 @@ import { Fragment, useState } from "react";
 
 const RestaurantMenu = ({ resMenuDetails }) => {
   const [showFoodList, setshowFoodList] = useState(false);
+
   return (
     <>
       <section className=" p-4 border-t-2 bg-gray-100  rounded-lg w-9/12 grid m-auto">
         {resMenuDetails.map((item, index) => {
-          console.log(index);
           return (
             <Fragment key={index}>
               <div className="flex justify-between p-4">
