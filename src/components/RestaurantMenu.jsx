@@ -1,29 +1,30 @@
 import { Non_Veg_Logo, Veg_Logo, Food_Image_Menu } from "../utils/constants";
 import { Fragment, useState } from "react";
-
-const RestaurantMenu = ({ resMenuDetails }) => {
-  const [showFoodList, setshowFoodList] = useState(false);
+const RestaurantMenu = ({ restMenu }) => {
+  const [showFoodList, setshowFoodList] = useState(null);
 
   return (
     <>
-      <section className=" p-4 border-t-2 bg-gray-100  rounded-lg w-9/12 grid m-auto">
-        {resMenuDetails.map((item, index) => {
-          return (
-            <Fragment key={index}>
-              <div className="flex justify-between p-4">
-                <h2
-                  className="font-bold text-lg"
-                  onClick={() => {
-                    setshowFoodList(true);
-                  }}
-                >
-                  {item?.card?.card?.title}
+      {restMenu.map((foodCard, index) => {
+        return (
+          <Fragment key={index}>
+            <>
+              {/* Menu card header */}
+              <div
+                className="flex justify-between p-4 border-t-2"
+                onDoubleClick={() => setshowFoodList(null)}
+                onClick={() => {
+                  setshowFoodList(index);
+                }}
+              >
+                <h2 className="font-bold text-lg">
+                  {foodCard?.card?.card?.title}
                 </h2>
                 <span>🔽</span>
               </div>
-
-              {showFoodList &&
-                item?.card?.card?.itemCards.map((foodCard) => {
+              {/* Menu card List details */}
+              {showFoodList == index &&
+                foodCard?.card?.card?.itemCards.map((foodCard) => {
                   const {
                     id,
                     name,
@@ -44,22 +45,24 @@ const RestaurantMenu = ({ resMenuDetails }) => {
                             <div className="font-semibold">{name}</div>
                           </div>
                           <div className="pl-4 py-1">
-                            Rs.{defaultPrice / 100 || price / 100}
+                            ₹ {defaultPrice / 100 || price / 100} /-
                           </div>
-                          <div className=" flex items-center  py-1">
-                            <svg
-                              width="40"
-                              height="10"
-                              viewBox="0 0 24 24"
-                              xmlns="http://www.w3.org/2000/svg"
-                            >
-                              <polygon
-                                fill="green"
-                                points="12,2 15,9 22,9 17,14 18.5,21 12,17 5.5,21 7,14 2,9 9,9"
-                              />
-                            </svg>
-                            <span> {ratings?.aggregatedRating?.rating}</span>
-                          </div>
+                          {ratings?.aggregatedRating?.rating && (
+                            <div className=" flex items-center  py-1">
+                              <svg
+                                width="40"
+                                height="10"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <polygon
+                                  fill="green"
+                                  points="12,2 15,9 22,9 17,14 18.5,21 12,17 5.5,21 7,14 2,9 9,9"
+                                />
+                              </svg>
+                              <span> {ratings?.aggregatedRating?.rating}</span>
+                            </div>
+                          )}
                           <div className="pl-4 py-1">{description}</div>
                         </div>
                         <div>
@@ -75,10 +78,10 @@ const RestaurantMenu = ({ resMenuDetails }) => {
                     </Fragment>
                   );
                 })}
-            </Fragment>
-          );
-        })}
-      </section>
+            </>
+          </Fragment>
+        );
+      })}
     </>
   );
 };

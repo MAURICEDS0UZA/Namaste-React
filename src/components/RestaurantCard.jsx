@@ -7,8 +7,8 @@ import RestaurantMenu from "./RestaurantMenu";
 const RestaurantCard = () => {
   const [restaurant, setRestaurant] = useState([]);
   const [restMenu, setrestMenu] = useState([]);
-  const { resId } = useParams();
 
+  const { resId } = useParams();
   const res = useRestaurantCard(resId);
 
   useEffect(() => {
@@ -34,7 +34,9 @@ const RestaurantCard = () => {
   return (
     <>
       <RestaurantDetails resListDetail={restaurant} />
-      <RestaurantMenu resMenuDetails={restMenu} />
+      <section className=" p-4  bg-gray-100  rounded-lg w-9/12 grid m-auto">
+        <RestaurantMenu restMenu={restMenu} />
+      </section>
     </>
   );
 };
