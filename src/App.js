@@ -7,6 +7,9 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import Contact from "./components/Contact";
 import RestaurantCard from "./components/RestaurantCard";
 import user from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/cart";
 
 const BodyContainer = lazy(() => import("../src/components/BodyContainer"));
 
@@ -44,10 +47,12 @@ const App = () => {
 
   return (
     <>
-      <user.Provider value={{ userLogin: userName, setUserName }}>
-        <Header />
-        <Outlet />
-      </user.Provider>
+      <Provider store={appStore}>
+        <user.Provider value={{ userLogin: userName, setUserName }}>
+          <Header />
+          <Outlet />
+        </user.Provider>
+      </Provider>
     </>
   );
 };
@@ -76,6 +81,10 @@ const appRoute = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/restaurant/:resId",
