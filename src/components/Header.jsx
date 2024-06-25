@@ -2,11 +2,14 @@ import { useContext, useState } from "react";
 import { Company_Logo } from "../utils/constants";
 import { Link } from "react-router-dom";
 import user from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
   const [loginBtn, setLoginBtn] = useState("Log in");
   const { userLogin } = useContext(user);
-
+  const cart = useSelector((store) => {
+    return store.cart.items;
+  });
   const updateLogin = () => {
     loginBtn === "Log in" ? setLoginBtn("Log out") : setLoginBtn("Log in");
   };
@@ -28,7 +31,9 @@ const Header = () => {
             <Link to="/Contact">Contact us</Link>
           </li>
           <li className="px-4 py-2 m-4 font-medium bg-slate-200  hover:bg-slate-300 rounded-lg">
-            <Link to="/">Cart</Link>
+            <Link to="/cart">
+              Cart <span className="text-blue-600">{cart.length}</span>
+            </Link>
           </li>
 
           <li className="px-4 py-2 m-4 font-medium bg-slate-200 hover:bg-slate-300 rounded-lg">
