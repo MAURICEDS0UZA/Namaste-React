@@ -4,5 +4,5 @@ import cartSlice from "./cartSlice";
 const appStore = configureStore({
   reducer: { cart: cartSlice },
 });
-
+// appStore.getState();
 export default appStore;
