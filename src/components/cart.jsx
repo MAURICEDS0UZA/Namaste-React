@@ -17,21 +17,22 @@ const Cart = () => {
           </h2>
         </div>
 
-        {cart.map((foodCard) => {
+        {cart.map((foodCard, index) => {
           return (
-            <>
-              <div className="flex justify-between items-center p-4 border-t-2 flex-col">
-                <Items foodCard={foodCard} />
-                <button
-                  onClick={() => {
-                    dispatch(removeItem());
-                  }}
-                  className="bg-gray-600 text-white w-fit font-semibold p-2 rounded-md"
-                >
-                  Remove item
-                </button>
-              </div>
-            </>
+            <div
+              key={index}
+              className="flex justify-between items-center p-4 border-t-2 flex-col"
+            >
+              <Items foodCard={foodCard} />
+              <button
+                onClick={() => {
+                  dispatch(removeItem());
+                }}
+                className="bg-gray-600 text-white w-fit font-semibold p-2 rounded-md"
+              >
+                Remove item
+              </button>
+            </div>
           );
         })}
       </section>
